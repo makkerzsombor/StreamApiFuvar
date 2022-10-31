@@ -4,6 +4,7 @@ package hu.petrik;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,8 +23,15 @@ public class Main {
         for (Fuvar fuvar: fuvarok) {
             System.out.println(fuvar);
         }
-        
+        // Feladatok
+        System.out.printf("\nÖsszesen %d db fuvar volt aznap.", fuvarok.stream().count());
+        //System.out.printf("A 6185-ös taxisnak összesen %f $-t kapott aznap.",fuvarok.stream(). );
+        // feladat 3
+        System.out.printf("\nA leghosszabb fuvar adatai: ", fuvarok.stream()
+                .max(Comparator.comparingInt(Fuvar::getUtazas))
+                .get());
     }
+
     private static void beolvas(String fileName) throws FileNotFoundException {
         Scanner sc = new Scanner(new File(fileName));
         sc.nextLine();
